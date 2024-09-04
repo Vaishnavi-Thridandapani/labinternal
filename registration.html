@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Registration Form</title>
+    <style>
+        body {
+            background-color: orange;
+        }
+
+        .form-container {
+            margin: auto;
+            width: 40%;
+            position: relative;
+        }
+
+        .photo-preview {
+            position: absolute;
+            top: 20px;
+            right: -120px;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .photo-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-upload {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .photo-upload input[type="file"] {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+           
+     <!--Body of the Webpage-->
+<body>
+          
+          <!--Start of Form-->
+          <div class="form-container">
+            <form>
+                <h2>Student Registration Form</h2>
+                <p>Fill in this form to register</p>
+                <br>
+
+                <!--Input elements for form-->
+                <label><b>First Name</b></label> 
+                <input type="text" placeholder="Enter your first name" name="first_name" required>
+                <br>
+
+                <br>
+                <label><b>Last Name</b></label>
+                <input type="text" placeholder="Enter your last name" name="last_name" required>
+                <br>
+                <br>
+                <label><b>E-mail</b></label>
+                <input type="email" placeholder="Enter your e-mail" name="email" required>
+                <br>
+                <br>
+                <label><b>Date of Birth</b></label>
+                <input type="date" name="dob" required>
+                <br>
+                <br>
+                <label><b>Set Username</b></label>
+                <input type="text" placeholder="Set Username" name="username" required>
+                <br>
+                <br>
+                <label><b>Set Password</b></label>
+                <input type="password" placeholder="Set password" name="password" required>
+                <br>
+
+                <br>
+                <label><b>Gender</b></label><br>
+                <input type="radio" name="gender" value="Male">
+                <label for="Male">Male</label><br>
+                <input type="radio" name="gender" value="Female">
+                <label for="Female">Female</label><br>
+                <input type="radio" name="gender" value="Others">
+                <label for="Others">Others</label>
+                <br>
+
+                <br>
+                <!-- Photo Upload -->
+                <div class="photo-upload">
+                    <label><b>Upload Photo:</b></label><br>
+                    <input type="file" name="photo" accept="image/*" onchange="previewPhoto(event)" required>
+                </div>
+                
+                <!-- Photo Preview Box -->
+                <div class="photo-preview" id="photoPreview">
+                    <span>No Image</span>
+                </div>
+
+                <br>
+                <!-- Languages Known -->
+                <label><b>Languages Known:</b></label><br>
+                <input type="checkbox" name="languages" value="English">
+                <label for="English">English</label><br>
+                <input type="checkbox" name="languages" value="Hindi">
+                <label for="Hindi">Hindi</label><br>
+                <input type="checkbox" name="languages" value="Telugu">
+                <label for="Telugu">Telugu</label><br>
+                <input type="checkbox" name="languages" value="German">
+                <label for="German">German</label>
+                <br>
+
+                <br>
+                <label><b>Course :</b></label>   
+                <select>
+                    <option value="Course">Course</option>    
+                    <option value="CS">Computer Fundamentals</option>  
+                    <option value="AI">Artificial Intelligence</option>  
+                    <option value="ML">Machine Learning</option>  
+                    <option value="OOPS">Object Oriented Programming</option>  
+                    <option value="DBMS">Database Management System</option>   
+                </select>
+                <br>
+                <br>
+                <input type="button" value="Register"/> 
+            </form>
+          </div>
+
+          <!-- JavaScript to handle photo preview -->
+          <script>
+            function previewPhoto(event) {
+                const photoPreview = document.getElementById('photoPreview');
+                const file = event.target.files[0];
+                const reader = new FileReader();
+
+                reader.onload = function(){
+                    const imgElement = document.createElement('img');
+                    imgElement.src = reader.result;
+                    photoPreview.innerHTML = '';
+                    photoPreview.appendChild(imgElement);
+                }
+
+                if (file) {
+                    reader.readAsDataURL(file);
+                }
+            }
+          </script>
+</body>
+</html>
+
